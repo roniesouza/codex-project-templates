@@ -1,12 +1,13 @@
+#:schema https://developers.openai.com/codex/config-schema.json
+
 # Configuração padrão do Codex para este repositório.
-# O agente principal usa Sol com raciocínio Medium por padrão.
 # A seleção feita na interface do VS Code sobrescreve esses valores na sessão atual.
 
 model = "gpt-5.6-sol"
 model_reasoning_effort = "medium"
+sandbox_mode = "workspace-write"
 
 [agents]
-enabled = true
 max_concurrent_threads_per_session = 4
 default_subagent_model = "gpt-5.6-terra"
 default_subagent_reasoning_effort = "medium"
