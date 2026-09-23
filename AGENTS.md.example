@@ -210,6 +210,46 @@ implementar → validar → revisar → corrigir → validar novamente → integ
 * Evitar comentários puramente estéticos quando não houver impacto relevante.
 * Se não houver problemas relevantes, informar explicitamente que não foram encontrados achados bloqueantes.
 
+## Branches
+
+Quando o trabalho estiver associado a um card, issue ou demanda, usar o identificador diretamente no nome da branch.
+
+Formato:
+
+```text
+<tipo>/<CARD-ID>
+```
+
+Tipos permitidos:
+
+```text
+feat
+fix
+docs
+refactor
+test
+chore
+```
+
+Exemplos:
+
+```text
+feat/PED-551
+fix/GS-365
+refactor/PED-602
+```
+
+Regras:
+
+* manter o tipo em inglês e minúsculo;
+* manter o identificador do card exatamente no padrão utilizado pela ferramenta de gestão;
+* não adicionar descrição ao nome da branch quando o card já representar claramente a unidade de trabalho;
+* não incluir nome de pessoa, data ou informações redundantes;
+* não inventar identificadores;
+* quando a tarefa não possuir card associado, seguir a convenção existente no projeto.
+
+Antes de criar uma branch associada a uma demanda, confirmar o identificador quando ele não tiver sido fornecido.
+
 ## Commits
 
 Todos os commits devem seguir Conventional Commits:
@@ -233,15 +273,32 @@ Manter o tipo em inglês.
 
 Escrever a descrição curta, objetiva e em português.
 
+Quando o trabalho estiver associado a um card, issue ou demanda, usar o identificador como escopo:
+
+```text
+<tipo>(<CARD-ID>): <descrição>
+```
+
 Exemplos:
 
 ```text
-feat: adiciona validação de configuração
-fix: corrige tratamento de entrada inválida
-docs: atualiza instruções de uso
-refactor: simplifica fluxo de processamento
-test: adiciona cobertura para cenário de erro
-chore: atualiza configuração de desenvolvimento
+feat(PED-551): criar endpoint de pedidos
+fix(GS-365): corrigir validação de email
+refactor(PED-602): simplificar fluxo de processamento
+test(PED-551): adicionar testes do endpoint
+docs(GS-365): atualizar instruções de configuração
+chore(PED-602): atualizar configuração de desenvolvimento
+```
+
+Quando não houver card associado, o escopo pode ser omitido:
+
+```text
+feat: adicionar validação de configuração
+fix: corrigir tratamento de entrada inválida
+docs: atualizar instruções de uso
+refactor: simplificar fluxo de processamento
+test: adicionar cobertura para cenário de erro
+chore: atualizar configuração de desenvolvimento
 ```
 
 Antes de criar qualquer commit:
@@ -249,29 +306,14 @@ Antes de criar qualquer commit:
 * verificar o diff;
 * confirmar que somente arquivos relacionados ao escopo estão preparados;
 * não incluir segredos, credenciais ou artefatos locais;
-* respeitar convenções adicionais definidas pelo projeto.
+* respeitar convenções adicionais definidas pelo projeto;
+* confirmar o identificador do card quando aplicável e ainda não tiver sido informado.
 
 Criar commit ou executar push somente quando explicitamente solicitado.
 
 Não reescrever histórico nem usar operações Git destrutivas sem autorização explícita.
 
-Quando o projeto utilizar card, issue ou demanda associada ao trabalho, confirmar o identificador antes de incluí-lo.
-
-Quando houver identificador, incluir preferencialmente no rodapé:
-
-```text
-Refs: <CARD-ID>
-```
-
-Exemplo:
-
-```text
-feat: adiciona validação de configuração
-
-Refs: ABC-123
-```
-
-Nunca inventar identificadores.
+Nunca inventar identificadores de card.
 
 Não exigir referência a card ou demanda quando o projeto ou a tarefa não utilizar esse processo.
 
